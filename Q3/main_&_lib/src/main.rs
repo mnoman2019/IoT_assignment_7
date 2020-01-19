@@ -1,0 +1,23 @@
+use mytable;
+use std::io;
+fn main() {
+    loop {
+        println!("Please input your guess.");
+
+        let mut input1 = String::new();
+
+        io::stdin()
+            .read_line(&mut input1)
+            .expect("Failed to read line");
+
+        let input1: u32 = match input1.trim().parse() {
+            Ok(num) => num,
+            Err(_) => continue,
+        };
+
+        println!("You guessed: {}", input1);
+
+        mytable::welcome::pakistan::table2(input1);
+        break;
+    }
+}
